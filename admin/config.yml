@@ -1,1 +1,16 @@
 
+backend:
+  name: github
+  repo: Nahydu/Nahydumoreno
+  branch: main
+media_folder: "images"
+public_folder: "/images"
+collections:
+  - name: "pages"
+    label: "Pages"
+    files:
+      - file: "index.html"
+        name: "home"
+        label: "Home Page"
+        fields:
+          - { label: "Content", name: "body", widget: "text" }
