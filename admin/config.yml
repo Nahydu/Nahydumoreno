@@ -1,16 +1,29 @@
-
 backend:
   name: github
   repo: Nahydu/Nahydumoreno
   branch: main
+
 media_folder: "images"
 public_folder: "/images"
+
 collections:
+  - name: "blog"
+    label: "Blog"
+    folder: "_posts"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Date", name: "date", widget: "datetime" }
+      - { label: "Body", name: "body", widget: "markdown" }
+
   - name: "pages"
     label: "Pages"
     files:
-      - file: "index.html"
+      - file: "_data/home.yml"
         name: "home"
         label: "Home Page"
         fields:
           - { label: "Content", name: "body", widget: "text" }
+
+
