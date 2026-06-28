@@ -4,19 +4,17 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Admin</title>
+
+    <!-- Netlify Identity (OBLIGATORIO) -->
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
   </head>
 
   <body>
     <!-- Decap CMS -->
     <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
 
-    <!-- Netlify Identity (OBLIGATORIO) -->
-    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-
     <script>
       if (window.netlifyIdentity) {
-        window.netlifyIdentity.init();
-
         window.netlifyIdentity.on("init", user => {
           if (!user) {
             window.netlifyIdentity.on("login", () => {
@@ -25,9 +23,11 @@
           }
         });
 
-        window.netlifyIdentity.on("error", err => {
-          console.log(err);
+        window.netlifyIdentity.on("logout", () => {
+          document.location.href = "/";
         });
+
+        window.netlifyIdentity.init();
       }
     </script>
   </body>
